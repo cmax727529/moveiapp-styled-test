@@ -61,12 +61,12 @@ const Movies = () => {
 };
 
 const MoviesWrapper = styled.div`
-  padding: 5rem 0;
+  padding: 1rem 0;
 `;
 
 const Actions = styled.div`
   text-align: right;
-  margin: 0 2rem;
+  margin: 1rem 2rem;
 `;
 
 export default Movies;
