@@ -18,6 +18,9 @@ const plugins = [
       'camel2DashComponentName': false
     },
     'icons'
+  ],
+  [
+    'babel-plugin-styled-components'
   ]
 ];
 
