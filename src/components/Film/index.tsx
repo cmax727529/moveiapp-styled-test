@@ -5,6 +5,7 @@ import {
 } from '@material-ui/core';
 
 import FilmModel from '../../types/Film';
+import RatingModel from '../../types/Rating';
 import AdultIcon from './plus-18.png';
 import RatingList from '../RatingList';
 
@@ -12,21 +13,25 @@ interface FilmProps {
   film: FilmModel;
   active?: boolean;
   toggleFilm: (filmId: string) => void;
+  handleAddRating: (filmId: string, rating: RatingModel) => void;
 }
 
-const Film: React.FC<FilmProps> = ({film, active, toggleFilm}) => {
+const Film: React.FC<FilmProps> = ({
+  film, active, toggleFilm, handleAddRating,
+}) => {
   const handleClick = () => {
     toggleFilm(film.id);
   };
 
   return (
-    <FilmWrapper onClick={handleClick} active={active}>
+    <FilmWrapper active={active}>
       <CardHeader
         action={
           film.adult ? <img src={AdultIcon} alt={film.title} /> : null
         }
         title={film.title}
         subheader={`${film.director}, ${film.year}`}
+        onClick={handleClick}
       />
       <Collapse in={active}>
         <FilmImage src={film.cover} title={film.title} />
@@ -35,7 +40,11 @@ const Film: React.FC<FilmProps> = ({film, active, toggleFilm}) => {
             {film.synopis}
           </Typography>
         </CardContent>
-        <RatingList ratings={film.ratings} />
+        <RatingList
+          filmId={film.id}
+          ratings={film.ratings}
+          handleAddRating={(rating) => handleAddRating(film.id, rating)}
+        />
       </Collapse>
     </FilmWrapper>
   )

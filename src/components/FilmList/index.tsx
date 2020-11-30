@@ -3,14 +3,17 @@ import styled from 'styled-components';
 
 import Film from '../Film';
 import FilmModel from '../../types/Film';
+import RatingModel from '../../types/Rating';
 
 interface FilmListProps {
   films: FilmModel[];
+  handleAddRating: (filmId: string, rating: RatingModel) => void;
 }
 
-const FilmList: React.FC<FilmListProps> = (props) => {
+const FilmList: React.FC<FilmListProps> = ({
+  films, handleAddRating,
+}) => {
   const [activeFilmId, setActiveFilmId] = useState<string>('');
-  const films: FilmModel[] = props.films;
 
   const toggleFilm = (filmId: string) => {
     if (activeFilmId === filmId) {
@@ -24,8 +27,9 @@ const FilmList: React.FC<FilmListProps> = (props) => {
     <Film
       key={film.id}
       film={film}
-      toggleFilm={toggleFilm}
       active={activeFilmId === film.id}
+      toggleFilm={toggleFilm}
+      handleAddRating={handleAddRating}
     />
   );
 

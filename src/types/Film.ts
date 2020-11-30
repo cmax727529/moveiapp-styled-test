@@ -16,7 +16,7 @@ interface Film {
   year: number;
   director: string;
   synopis: string;
-  ratings?: Rating[];
+  ratings: Rating[];
 }
 
 export default Film;

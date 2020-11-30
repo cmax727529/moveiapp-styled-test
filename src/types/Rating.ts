@@ -1,6 +1,6 @@
 interface Rating {
-  user: string;
-  rate: number;
+  name: string;
+  rating: number;
   comment: string;
 }
 

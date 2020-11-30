@@ -35,6 +35,7 @@ const FilmModal: React.FC<FilmModalProps> = ({
     year: 2020,
     director: '',
     synopis: '',
+    ratings: [],
   });
   const [errors, setErrors] = useState<Validation>(noErrors);
 
